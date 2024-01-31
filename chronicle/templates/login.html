@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Johan W Louw - Portfolio</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'chronicle/style.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+	{% include 'navguide.html' %}
+  <div class = "textblock" style = "padding-top: 10px;text-align: center;justify-content: center;">
+    <h2>Login</h2>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    </div>
+  </body>

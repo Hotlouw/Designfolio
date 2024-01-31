@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Johan W Louw - Blogs</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'chronicle/style.css' %}">
+	
+	<style> 
+		.pcert-container{
+			display : flexbox;
+			width:1000px;
+			height : auto;
+			padding : 10px;			
+			flex-wrap: wrap;
+		}
+
+		.pcert-data{
+			text-align: left;
+			width:1000px;
+			height:100%;
+			display: flexbox;
+			border-radius: 10px;
+			padding-left:10px;
+			float : left;
+			box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+			gap:10px;
+			margin-left:50px;
+			max-inline-size: 3fr;
+			flex: 0 0 calc(50% - 10px); /* Each item takes 50% of the container width with a little space in between */
+  			margin: 5px; /* Space between items */
+  			box-sizing: border-box;
+		}
+
+		.pcert-img {
+		position: relative;
+		max-width : 200px;
+
+		width: 100%;
+		height: 100%;
+		background-color: lightskyblue;		
+		}
+
+		.pcert-inst{
+			width : 100%;
+			height:100%;
+			font-weight: bold;
+			font-family: Arial, Helvetica, sans-serif;
+			text-align: left;
+			padding-left: -10px;			
+		}
+
+		.pcert-name{
+			width:100%;
+			height:100%;
+		}
+		
+
+	pre {
+      font-family: 'Courier New', Courier, monospace;
+	  font-size: 20px;
+      background-color: #091217;
+      padding: 10px;
+      border: 1px solid #202020;
+      border-radius: 4px;
+      white-space: pre-wrap;
+	  text-align:left;
+	  color:solid #202020;
+	}
+
+	select{
+		color: #FFF;
+		font-size: 24px;
+		text-align: center;
+		background: #008080;
+		border-radius: 10px;
+		border-color: #008080;
+		box-shadow: none;
+		border-width: 2px;
+		border-style: solid;
+		text-align: center;
+	}
+
+	
+	</style>
+</head>
+  
+<body>
+	{% include 'navguide.html' %}
+<div class = "text-block" style="padding-top:50px;">	
+		<h1 style="text-align:center;">BLOGS: {{selected_library}}</h1>
+		<h5 style="text-align:center;">Blogs done by Johan W Louw - Select a library.</h5>
+		
+		<form method="post" action="{% url 'blog_list' %}">
+			{% csrf_token %}
+			<label for="library">Select Library:</label>
+			<select name="library" id="library">
+				{% for library in libraries %}
+					<option value="{{ library.id }}">{{ library.name }}</option>
+				{% endfor %}
+			</select>
+			<button type="submit">Submit</button>
+			</form>
+		
+		<div class="pcert-container" style = " display : flexbox;">
+					{% if blogs %}
+					
+						{% for blog in blogs %}
+							<div class="pcert-data">							
+								<h3 class="pcert-name" style="color: #FFF;  background-color: #008080;">{{ blog.name }}</h3>
+								<p class="pcert-inst">Date: {{ blog.date }}</p>
+								<pre>{{ blog.article }}</pre>
+								<p>{{ blog.signed }}</p>
+								<p>Category : {{ blog.category }}</p>
+							</div>	
+						</div>
+						
+						
+						</div>	
+						{% endfor %}
+						
+					{% else %}
+					<p>No Blogs available.</p>
+					{% endif %}
+			</div>	
+		
+	</div>
+	
+	
+</body>

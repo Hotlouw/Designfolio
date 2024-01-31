@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Johan W Louw - Portfolio</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'chronicle/style.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+</head>
+<body>
+  {% include 'navguide.html' %}
+  <h2>Create a new other</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+  <!-- Placeholder for success message -->
+  <div id="successMessage" style="display: none;">
+    <p>Project submitted successfully!</p>
+  </div>
+  <script>
+    $(document).ready(function () {
+        $('#projectForm').submit(function (event) {
+            event.preventDefault();  // Prevent the default form submission
+    
+            // Submit the form using AJAX
+            $.ajax({
+                type: 'POST',
+                url: '{% url "create_other" %}',  // Replace with your actual URL
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    // Display success message
+                    $('#successMessage').show();
+    
+                    // Optionally, you can clear the form or perform other actions here
+                },
+                error: function (error) {
+                    console.log(error);
+                    // Handle errors if needed
+                }
+            });
+        });
+    });
+    </script>
+</body>

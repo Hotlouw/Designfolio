@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Johan W Louw - Training</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'chronicle/style.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+
+		a {
+        color: #008080; /* Set the desired color */
+            
+        }
+		.slider-container {
+		  width: 400px;
+		  overflow: hidden;
+		  margin: 20px auto;
+		}
+	
+		.slider {
+		  display: flex;
+		  transition: transform 0.5s ease-in-out;
+		  text-align: center;
+		}
+	
+		.slide {
+		  width: 400px;
+		  height: 400px;
+		  flex-shrink: 0;
+		}
+	
+		.arrow {
+		  cursor: pointer;
+		  position: absolute;
+		  top: 50%;
+		  width: 30px;
+		  height: 30px;
+		  background-color: #333;
+		  color: #fff;
+		  text-align: center;
+		  line-height: 30px;
+		  font-size: 20px;
+		  border-radius: 50%;
+		  user-select: none;
+		}
+	
+		.prev {
+		  left: 10px;
+		}
+	
+		.next {
+		  right: 10px;
+		}
+
+		.slidetext {
+            background-color: #FFF; /* Set background color */
+            padding: 15px; /* Add some padding for spacing */
+            border: 1px solid #ccc; /* Add a border */
+            box-shadow: 2px 2px 5px #888888; /* Add a box shadow (horizontal offset, vertical offset, blur radius, color) */
+            font-family: Arial, sans-serif; /* Set font family */
+            font-size: 30px; /* Set font size */
+            color: #008080; /* Set text color */
+			margin-left : 20px;
+		}
+		.scroller{
+		margin: 10px;
+		padding-left: 5em;
+		padding-right: 5em;
+		color: #FFF;
+		font-size: 24px;
+		text-align: center;
+		background: #008080;
+		border-radius: 10px;
+		border-color: #008080;
+		box-shadow: none;
+		border-width: 2px;
+		border-style: solid;
+		width:200px;
+		margin-left: 360px;
+		
+}
+
+	.scroller:hover{
+		color:#008080;
+		background-color: #FFF;
+}
+
+	.scroller:active{
+		color: #AAFFFC;
+		background-color: #FFF;
+		}
+	.scroll-link{
+		color: #FFF;
+		text-decoration:none;
+		
+	}
+
+	.scroll-link:hover{
+		color: #008080;
+	}
+	
+	.aref{
+		
+		margin: 10px;
+		padding-left: 5em;
+		padding-right: 5em;
+		color: #FFF;
+		font-size: 24px;
+		text-align: center;
+		background: #008080;
+		border-radius: 10px;
+		border-color: #008080;
+		box-shadow: none;
+		border-width: 2px;
+		border-style: solid;
+		text-decoration:none;}
+	
+	
+	  </style>
+</head>
+<body>
+	{% include 'navguide.html' %}
+
+	<div class = "text-block">
+	<div class="slider-container" style = "z-index: 0;">
+	  <div class="slider">
+		<div class="slide"><img src="{% static 'chronicle/trainingslider/freecodecamp.png' %}" alt="freecodecamplogo"></div>
+		<div class="slide"><img src="{% static 'chronicle/trainingslider/linkedin.png' %}" alt="linkedinlogo"></div>
+		<div class="slide"><img src="{% static 'chronicle/trainingslider/medium.png' %}" alt="mediumlogo"></div>
+		<div class="slide"><img src="{% static 'chronicle/trainingslider/realpython.png' %}" alt="realpythonlogo"></div>
+		<div class="slide"><img src="{% static 'chronicle/trainingslider/udemy.png' %}" alt="udemylogo"></div>
+		<div class="slide"><img src="{% static 'chronicle/trainingslider/youtube.png' %}" alt="youtubelogo"></div>
+		<div class="slide"><img src="{% static 'chronicle/trainingslider/webflow.png' %}" alt="webflowlogo"></div>
+		
+			
+		
+		<!-- Add more slides as needed -->
+	  </div>
+	  <div class="arrow prev" onclick="prevSlide()">&#9665;</div>
+	  <div class="arrow next" onclick="nextSlide()">&#9655;</div>
+	</div>
+	<div class = "textblock" style = "padding-top: 10px;">
+		<div class=" containerlist">
+		<h1 class ="slidetext">My Non-Certified Training include:<br></h1>
+			<ol style = "font-size: 30px; list-style-type: none;">
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentfreecodecamp()">FreeCodeCamp</a></li>
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentlinkedin()">Linkedin</li>
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentmedium()">Medium</li>	
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentrealpython()">RealPython</a></li>
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentudemy()">Udemy</a></li>
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentyoutube()">Youtube</a></li>
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentwebflow()">Webflow</a></li>
+				
+			</ol>
+		
+
+		<p class ="slidetext" id="contentfreecodecamp">
+			FreeCodeCamp has a massive collection of courses that can be completed at leisure.<br>
+			<a href="https://scrapeops.io/python-scrapy-playbook/freecodecamp-beginner-course/" target="_blank" class= "aref">Python Scrapy Playbook - Beginner Course</a></p><br>
+		<p class ="slidetext" id="contentlinkedin">
+			Linkedin courses aim to enrich a user with skills that will make him stand out.<br>
+			<a href="https://www.linkedin.com/learning/introduction-to-artificial-intelligence" target="_blank" class= "aref">Introduction to Artificial Intelligence</a></p><br>
+		<p class ="slidetext" id="contentmedium">
+			 Medium articles on coding enhances my day with well-written and facinating information.<br>
+			<a href="https://medium.com/" target="_blank" class= "aref">Medium.com</a></p><br>
+		<p class ="slidetext" id="contentrealpython">
+			RealPython courses have made me a better coder.Courses Teaches me basics to advanced coding.<br>
+			<a href="https://realpython.com/courses/python-basics-lists-tuples/" target="_blank" class= "aref">Python Basics - Lists & Tuples</a><br>
+			<a href="https://realpython.com/python-for-data-analysis/" target="_blank" class= "aref">Python for Data-Analysis</a><br>
+			<a href="https://realpython.com/courses/python-exercises-functions-loops/" target="_blank" class= "aref">Python Exercises - Functions & Loops</a><br>
+			<a href="https://realpython.com/courses/python-urllib-request/" target="_blank" class= "aref">Python urllib request</a><br>
+			<a href="https://realpython.com/run-python-scripts/" target="_blank" class= "aref">Run Python Scripts</a><br>
+			<a href="https://realpython.com/python-catch-multiple-exceptions/" target="_blank" class= "aref">Python Catch Multiple Exceptions</a><br>
+			<a href="https://realpython.com/python-generate-qr-code/" target="_blank" class= "aref">Python Generate QR-Code</a><br>
+			<a href="https://realpython.com/get-started-with-django-1/" target="_blank" class= "aref">Get Started with Django-part1</a><br>
+		</p><br>
+		<p class ="slidetext" id="contentudemy">
+			Udemy is world-renowned when in comes to online courses, free courses have moulded me<br>
+			<a href="https://www.udemy.com/course/xpath-tutorial-from-basic-to-advance-level" target="_blank" class= "aref">Xpath Tutorial from Basic to Advanced Level</a><br>
+		</p><br>
+		<p class ="slidetext" id="contentyoutube">
+			Youtube has been a great help and a passionate teacher.I can do anything (as long as youtube shows me how)<br>
+			<a href="https://www.youtube.com/watch?v=fsVY66QBhwM&t=623s" target="_blank" class= "aref">Caleb Curry - How to Upload an Image Using Django ImageField (The RIGHT Way)</a><br>
+			<br>
+			<a href="https://www.youtube.com/watch?v=ygzGr51dbsY" target="_blank" class= "aref">Codemy.com - How To Upload Images With Django - Django Blog #26</a><br>
+			<br>
+			<a href="https://www.youtube.com/watch?v=o0XbHvKxw7Y&t=22037s" target="_blank" class= "aref">Chuck Severance - Django For Everybody - Full Python University Course</a><br>
+			18 hours of work-though brilliance- best course I've had as yet.<br>
+			
+		<p class ="slidetext" id = "contentwebflow">
+			WebFlow - The new guy i found, teaching me the best way to code front-end. deluxe.</p><br>
+		
+	</div>
+	<script src="{% static 'chronicle/training.js' %}"></script>
+	
+	</body>

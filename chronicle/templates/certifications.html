@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Johan W Louw - Certifications</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'chronicle/style.css' %}">
+	
+	<style> 
+
+	</style>
+</head>
+  
+<body>
+	{% include 'navguide.html' %}
+
+<div class = "text-block" style="padding-top:50px;">	
+		<h1 style="text-align:center;">Certification List</h1>
+		<h5 style="text-align:center;">Every Certification I've finished.</h5>
+		
+			<div class="cert-container" style = " display : flexbox; column-span: 2;">
+				{% if certifications %}
+					
+						{% for certification in certifications %}
+						
+						<div class="cert-data" >							
+							<h3 class="cert-name" style="color: #FFF;  background-color: #008080;">{{ certification.name }}</h3>
+							<img class="cert-img" src="/chronicle{{ certification.certificate.url }}" alt="{{ certification.name }} Certificate">
+							<p class="cert-inst">Institution: {{ certification.Institution }}</p>
+						</div>
+						
+						
+					{% endfor %}
+				{% else %}
+					<p>No certifications available.</p>
+				{% endif %}
+			</div>	
+		
+	</div>
+	
+
+
+</body>

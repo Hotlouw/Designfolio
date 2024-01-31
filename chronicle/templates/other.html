@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Other Interests</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'chronicle/style.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<style> 
+	.cert-container{
+		display : flexbox;
+		width:1000px;
+		height : auto;
+		padding : 10px;			
+		flex-wrap: wrap;
+	}
+
+	.cert-data{
+		text-align: left;
+		width:1000px;
+		height:100%;
+		display: flexbox;
+		border-radius: 10px;
+		padding-left:10px;
+		float : left;
+		box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+		gap:10px;
+		margin-left:50px;
+		max-inline-size: 3fr;
+		flex: 0 0 calc(50% - 10px); /* Each item takes 50% of the container width with a little space in between */
+		  margin: 5px; /* Space between items */
+		  box-sizing: border-box;
+	}
+
+	.cert-img {
+	position: relative;
+	max-width : 200px;
+
+	width: 100%;
+	height: 100%;
+	background-color: lightskyblue;		
+	}
+
+	.cert-inst{
+		width : 100%;
+		height:100%;
+		font-weight: bold;
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: left;
+		padding-left: -10px;
+		white-space: pre-wrap;			
+	}
+
+	.cert-name{
+		width:100%;
+		height:100%;
+	}
+	
+
+pre {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  background-color: #091217;
+  padding: 10px;
+  border: 1px solid #008080;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  text-align:left;
+  color:#008080;
+}
+
+select{
+	color: #FFF;
+	font-size: 24px;
+	text-align: center;
+	background: #008080;
+	border-radius: 10px;
+	border-color: #008080;
+	box-shadow: none;
+	border-width: 2px;
+	border-style: solid;
+	text-align: center;
+}
+
+
+</style>
+</head>
+
+<body>
+{% include 'navguide.html' %}
+
+
+
+
+<div class = "text-block" style="padding-top:50px;">	
+	<h1 style="text-align:center;">Other List : {{selected_library}}</h1>
+	<h5 style="text-align:center;">My personal scrapyard.</h5>
+	<form method="post" action="{% url 'other_list' %}">
+		{% csrf_token %}
+		<label for="library">Select Library:</label>
+		<select name="library" id="library">
+			{% for library in libraries %}
+				<option value="{{ library.id }}">{{ library.name }}</option>
+			{% endfor %}
+		</select>
+		<button type="submit">Submit</button>
+	</form>
+	
+	<div class="cert-container" style = " display : flexbox;">
+				{% if others %}
+				
+					{% for other in others %}
+						<div class="cert-data">							
+							<h3 class="cert-name" style="color: #FFF;  background-color: #008080;">{{ project.name }}</h3>
+							<img class="cert-img" src="/chronicle{{ other.image.url }}" alt="{{ other.name }} list">
+							<p class="cert-inst">Details: {{ other.details }}</p>
+							<p>Category : {{ other.category }}</p>
+						</div>	
+					</div>
+					
+					
+					</div>	
+					{% endfor %}
+					
+				{% else %}
+				<p>No Lists available. Select a library on top to load new info.</p>
+				{% endif %}
+		</div>	
+	
+</div>
+
+
+</body>

@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Johan W Louw - Services</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'chronicle/style.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+
+		a {
+        color: #008080; /* Set the desired color */
+            
+        }
+		.slider-container {
+		  width: 400px;
+		  overflow: hidden;
+		  margin: 20px auto;
+		}
+	
+		.slider {
+		  display: flex;
+		  transition: transform 0.5s ease-in-out;
+		}
+	
+		.slide {
+		  width: 400px;
+		  height: 400px;
+		  flex-shrink: 0;
+		}
+	
+		.arrow {
+		  cursor: pointer;
+		  position: absolute;
+		  top: 50%;
+		  width: 30px;
+		  height: 30px;
+		  background-color: #333;
+		  color: #fff;
+		  text-align: center;
+		  line-height: 30px;
+		  font-size: 20px;
+		  border-radius: 50%;
+		  user-select: none;
+		}
+	
+		.prev {
+		  left: 10px;
+		}
+	
+		.next {
+		  right: 10px;
+		}
+
+		.slidetext {
+            background-color: #FFF; /* Set background color */
+            padding: 15px; /* Add some padding for spacing */
+            border: 1px solid #ccc; /* Add a border */
+            box-shadow: 2px 2px 5px #888888; /* Add a box shadow (horizontal offset, vertical offset, blur radius, color) */
+            font-family: Arial, sans-serif; /* Set font family */
+            font-size: 30px; /* Set font size */
+            color: #008080; /* Set text color */
+			margin-left : 20px;
+		}
+		.scroller{
+		margin: 10px;
+		padding-left: 5em;
+		padding-right: 5em;
+		color: #FFF;
+		font-size: 24px;
+		text-align: center;
+		background: #008080;
+		border-radius: 10px;
+		border-color: #008080;
+		box-shadow: none;
+		border-width: 2px;
+		border-style: solid;
+}
+
+	.scroller:hover{
+		color:#008080;
+		background-color: #FFF;
+}
+
+	.scroller:active{
+		color: #AAFFFC;
+		background-color: #FFF;
+		}
+	.scroll-link{
+		color: #FFF;
+		text-decoration:none;
+		
+	}
+
+	.scroll-link:hover{
+		color: #008080;
+	}
+	
+	  </style>
+</head>
+<body>
+	{% include 'navguide.html' %}
+
+	<div class = "text-block">
+	<div class="slider-container" style = "z-index: 0;">
+	  <div class="slider">
+		<div class="slide"><img src="{% static 'chronicle/slider/python.png' %}" alt="pythonlogo"></div>
+		<div class="slide"><img src="{% static 'chronicle/slider/django.png' %}" alt="djangologo"></div>
+		<div class="slide"><img src="{% static 'chronicle/slider/html.png' %}" alt="htmllogo"></div>
+		<div class="slide"><img src="{% static 'chronicle/slider/beautifulsoup.png' %}" alt="bslogo"></div>
+		<div class="slide"><img src="{% static 'chronicle/slider/selenium.png' %}" alt="seleniumlogo"></div>
+		<div class="slide"><img src="{% static 'chronicle/slider/scrapy.png' %}" alt="scrpaylogo"></div>
+		<div class="slide"><img src="{% static 'chronicle/slider/wordpress.png' %}" alt="wordpresslogo"></div>
+		<div class="slide"><img src="{% static 'chronicle/slider/webflow.png' %}" alt="webflowlogo"></div>
+		<div class="slide"><img src="{% static 'chronicle/slider/excel.png' %}" alt="excellogo"></div>
+			
+		
+		<!-- Add more slides as needed -->
+	  </div>
+	  <div class="arrow prev" onclick="prevSlide()">&#9665;</div>
+	  <div class="arrow next" onclick="nextSlide()">&#9655;</div>
+	</div>
+	<div class = "textblock" style = "padding-top: 10px;">
+		<div class=" containerlist">
+		<h1 class ="slidetext">My services include (Click to view service summary) :<br></h1>
+			<ol style = "font-size: 30px; list-style-type: none;">
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentpython()">General Python Development</a></li>
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentdjango()">Django Back-End Server Development</li>
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContenthtml()">HTML CSS Front-End Web Development</li>	
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentbs()">Web Scraping with BeautifulSoup</a></li>
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentselenium()">Web Automation using Selenium</a></li>
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentscrapy()">Web Scraping using Scrapy</a></li>
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentwordpress()">Website Design using Wordpress</a></li>
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentwebflow()">Website Design using Webflow</a></li>
+				<li class = "scroller"><a href="javascript:void(0);" class="scroll-link" onclick="scrollToContentexcel()">Advanced Excel Data Sciences via Functions, Macro creation, VBA Scripting</a></li>
+			</ol>
+		
+
+		<p class ="slidetext" id="contentpython">Python development encompasses building versatile and powerful applications using the Python programming language, known for its readability, simplicity, and extensive libraries, making it suitable for various domains such as web development, data science, machine learning, and automation</p><br>
+		<p class ="slidetext" id="contentdjango">Django back-end server development involves creating robust and scalable web applications using the Django framework, which follows the model-view-controller (MVC) architectural pattern and emphasizes rapid development and clean, maintainable code.</p><br>
+		<p class ="slidetext" id="contenthtml">Front-end HTML development focuses on creating user interfaces for websites or web applications using HTML (Hypertext Markup Language). HTML provides the structural foundation for web pages, defining elements such as headings, paragraphs, lists, links, and more. Front-end developers use HTML in conjunction with CSS (Cascading Style Sheets) for styling and may incorporate JavaScript for dynamic and interactive features, ensuring a visually appealing and functional user experience.</p><br>
+		<p class ="slidetext" id="contentbs">Beautiful Soup is a Python library designed for web scraping purposes to pull the data out of HTML and XML files. It provides a convenient way to navigate, search, and modify the parse tree, making it easier to extract information from web pages. Beautiful Soup works well with various parsers and is particularly useful for web scraping tasks where structured data retrieval is required.</p><br>
+		<p class ="slidetext" id="contentselenium">Selenium is a powerful open-source framework commonly used for automating web applications for testing purposes, but it can also be utilized for web scraping and automating repetitive tasks. It provides a way to interact with web browsers programmatically, allowing developers to simulate user actions such as clicking buttons, filling forms, and navigating through web pages. Selenium supports multiple programming languages, making it versatile for automating tasks across different platforms and browsers.</p><br>
+		<p class ="slidetext" id="contentscrapy">Scrapy is an open-source web crawling framework written in Python that is specifically designed for web scraping. It provides a set of reusable components and abstractions for efficiently extracting data from websites. Scrapy handles tasks such as sending HTTP requests, following links, and parsing HTML or XML content. Its modular and extensible architecture makes it a powerful tool for building web spiders to extract structured data from websites and is widely used in the field of data mining and web scraping.</p><br>
+		<p class ="slidetext" id = "contentwordpress">WordPress is a popular open-source content management system (CMS) written in PHP, often used for creating websites and blogs. It offers a user-friendly interface, a wide range of themes and plugins, making it accessible for users with varying levels of technical expertise. WordPress allows users to create and manage digital content easily, including text, images, videos, and more. It has a large and active community, providing support, updates, and a rich ecosystem of third-party extensions. WordPress powers a significant portion of the internet and is known for its flexibility, scalability, and ease of use.</p><br>
+		<p class ="slidetext" id = "contentwebflow">Webflow is a visual web development platform that allows users to design, build, and launch responsive websites without needing to write code. It combines a user-friendly visual interface with powerful features, enabling designers to create websites visually and then export clean, production-ready code. Webflow supports responsive design, allowing websites to adapt seamlessly to different screen sizes and devices. It also includes hosting services, making it a comprehensive solution for both design and deployment. Webflow is popular among designers and businesses for its intuitive interface and the ability to produce professional-looking websites without the need for extensive coding skills.</p><br>
+		<p class ="slidetext" id = "contentexcel">Microsoft Excel is a spreadsheet program developed by Microsoft as part of the Microsoft Office suite. It uses a grid of cells organized into rows and columns, where users can enter data, perform calculations, create charts, and analyze information. Excel is widely used for tasks such as financial analysis, data management, budgeting, and creating various types of reports. It supports a variety of functions and formulas for performing calculations, and its user-friendly interface makes it a versatile tool for individuals, businesses, and organizations to handle numerical and tabular data efficiently.</p><br>
+
+	</div>
+	<script src="{% static 'chronicle/services.js' %}"></script>
+	
+	</body>

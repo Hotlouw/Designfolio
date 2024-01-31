@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Johan W Louw - Data Entry</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'chronicle/style.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        
+	
+    </style>
+</head>
+<body>
+	{% include 'navguide.html' %}
+    <div class = "text-block">
+		<div class="text-container">
+            <h1>Select your data entry module:</h1>
+            <ul style = "columns: 1; column-width: 200px; display : inline-flexbox">
+                <li><a href="/chronicle/create_project/" target="_blank" class= "aref">Projects : Data Entry</a></li>
+                <li><a href="/chronicle/create_certification/" target="_blank" class= "aref">Certification : Data entry</a></li>
+                <li><a href="/chronicle/create_other/" target="_blank" class= "aref">Other : Data Entry</a></li>
+                <li><a href="/chronicle/create_blog/" target="_blank" class= "aref">Blog : Data entry</a></li>
+            </ul>
+           
+        </div>
+    </div>
+</body>
+</html>
