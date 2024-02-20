@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('chronicle/',include('chronicle.urls')),
     path('', index_view, name='index_view'),
+    path('main/',include(eshop.urls'))
    
     
 ]   
